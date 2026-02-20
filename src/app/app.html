@@ -1,0 +1,55 @@
+<div class="app-container">
+  <header class="app-header">
+    <h1>JR Remote Schedule</h1>
+    <div class="current-week-badge">
+      <span class="badge-label">{{ currentWeekLabel() }}</span>
+      <span class="badge-dates">{{ currentWeekDates() }}</span>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <app-week-selector
+      [weeks]="allWeeks"
+      [selectedIndex]="selectedIndex()"
+      (weekSelected)="onWeekSelected($event)"
+    />
+
+    <app-schedule-table [schedule]="schedule()" />
+
+    <section class="rules-section">
+      <h2>Rules</h2>
+      <ul class="rules-list">
+        <li>
+          No conversations whatsoever with other people about you working from home, believe me they will ruin it for us, 
+          not because they will want to do anything bad but just because the word getting out will just 
+          naturally ruin things
+        </li>
+        <li>
+          If you're out that week, you lose your wfh day. Same if you're sick. It's not punishment, it's reducing risk
+        </li>
+        <li>
+          Stay home, no home depot or islas canarias trips, unless of course it's during your lunch time
+        </li>
+        <li>If your day falls on a holiday, tough luck</li>
+        <li>
+          As soon as I get challenged by anyone, we will stop this until safe to
+          do again
+        </li>
+        <li>
+          If asked by others, you had a situation and worked it out with me. You
+          would have to follow up with requesting a leave absence, just in case
+          anyone decides to follow up
+        </li>
+        <li>No cameras when you're home, and if you get on camera use a background</li>
+        <li>
+          Be mindful of your dog barking or any other revealing noises
+          you accidentally (or not) mess up your order, you're coming to the office that day
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>&copy; {{ currentYear }} JR Remote Schedule</p>
+  </footer>
+</div>
