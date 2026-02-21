@@ -42,6 +42,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "baseHref": "/jrsched/",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
@@ -89,6 +90,9 @@
             }
           },
           "defaultConfiguration": "development"
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
