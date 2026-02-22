@@ -24,7 +24,7 @@ import { DateScheduleEntry } from '../services/schedule.service';
           </tbody>
         </table>
 
-        <h3 class="people-heading">People WFH</h3>
+        <h3 class="people-heading">People</h3>
         <table>
           <thead>
             <tr>
