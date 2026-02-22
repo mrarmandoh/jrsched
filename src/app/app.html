@@ -8,13 +8,65 @@
   </header>
 
   <main class="app-main">
-    <app-week-selector
-      [weeks]="allWeeks"
-      [selectedIndex]="selectedIndex()"
-      (weekSelected)="onWeekSelected($event)"
-    />
+    <div class="tab-bar">
+      <button
+        class="tab-btn"
+        [class.active]="activeTab() === 'weekly'"
+        (click)="onTabChange('weekly')"
+      >
+        Weekly Schedule
+      </button>
+      <button
+        class="tab-btn"
+        [class.active]="activeTab() === 'person'"
+        (click)="onTabChange('person')"
+      >
+        By Person
+      </button>
+      <button
+        class="tab-btn"
+        [class.active]="activeTab() === 'calendar'"
+        (click)="onTabChange('calendar')"
+      >
+        By Calendar
+      </button>
+    </div>
 
-    <app-schedule-table [schedule]="schedule()" />
+    @if (activeTab() === 'weekly') {
+      <app-week-selector
+        [weeks]="allWeeks"
+        [selectedIndex]="selectedIndex()"
+        (weekSelected)="onWeekSelected($event)"
+      />
+      <app-schedule-table [schedule]="schedule()" />
+    } @else if (activeTab() === 'person') {
+      <div class="person-selector">
+        <label for="person-select">Select Person</label>
+        <select
+          id="person-select"
+          [ngModel]="selectedPerson()"
+          (ngModelChange)="onPersonChange($event)"
+        >
+          @for (person of allPeople; track person) {
+            <option [value]="person">{{ person }}</option>
+          }
+        </select>
+      </div>
+      @if (selectedPerson()) {
+        <app-person-schedule-table [schedule]="personSchedule()" />
+      }
+    } @else {
+      <div class="date-selector">
+        <label for="date-select">Select Date</label>
+        <input
+          id="date-select"
+          type="date"
+          [ngModel]="selectedDate()"
+          (ngModelChange)="onDateChange($event)"
+        />
+      </div>
+      <app-date-schedule-table [entry]="dateSchedule()" />
+    }
 
     <section class="rules-section">
       <h2>Rules</h2>

@@ -44,6 +44,101 @@
   flex: 1;
 }
 
+.tab-bar {
+  display: flex;
+  gap: 0;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.tab-btn {
+  padding: 10px 24px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #64748b;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.tab-btn:hover {
+  color: #1e40af;
+}
+
+.tab-btn.active {
+  color: #1e40af;
+  border-bottom-color: #1e40af;
+}
+
+.person-selector {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.person-selector label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #334155;
+  white-space: nowrap;
+}
+
+.person-selector select {
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #fff;
+  color: #1e293b;
+  cursor: pointer;
+  min-width: 240px;
+  transition: border-color 0.2s;
+}
+
+.person-selector select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.date-selector {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.date-selector label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #334155;
+  white-space: nowrap;
+}
+
+.date-selector input[type="date"] {
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #fff;
+  color: #1e293b;
+  cursor: pointer;
+  min-width: 200px;
+  transition: border-color 0.2s;
+}
+
+.date-selector input[type="date"]:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
 .rules-section {
   margin-top: 40px;
   padding: 24px;
@@ -104,5 +199,30 @@
 
   .rules-section {
     padding: 16px;
+  }
+
+  .tab-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+
+  .person-selector {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .person-selector select {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .date-selector {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .date-selector input[type="date"] {
+    min-width: 0;
+    width: 100%;
   }
 }

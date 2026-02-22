@@ -5,6 +5,19 @@ import { GROUPS } from '../data/groups.data';
 import { ROTATION_MATRIX } from '../data/schedule.data';
 import { ALL_WEEKS, BASE_WEEK_START } from '../data/weeks.data';
 
+export interface PersonWeekEntry {
+  weekLabel: string;
+  day: string;
+  startDate: Date;
+}
+
+export interface DateScheduleEntry {
+  groupName: string;
+  members: string[];
+  dayOfWeek: string;
+  weekNumber: number;
+}
+
 @Injectable({ providedIn: 'root' })
 export class ScheduleService {
   getWeeks(): Week[] {
@@ -20,6 +33,46 @@ export class ScheduleService {
       groupName: GROUPS[rotation[dayIndex]].name,
       members: GROUPS[rotation[dayIndex]].members,
     }));
+  }
+
+  getAllPeople(): string[] {
+    return GROUPS.flatMap((g) => g.members).sort((a, b) => a.localeCompare(b));
+  }
+
+  getScheduleForPerson(name: string): PersonWeekEntry[] {
+    const groupIndex = GROUPS.findIndex((g) => g.members.includes(name));
+    if (groupIndex === -1) return [];
+
+    return ALL_WEEKS.map((week) => {
+      const rotation = ROTATION_MATRIX[week.weekNumber - 1];
+      const dayIndex = rotation.indexOf(groupIndex);
+      return {
+        weekLabel: week.label,
+        day: DAYS_OF_WEEK[dayIndex],
+        startDate: week.startDate,
+      };
+    });
+  }
+
+  getScheduleForDate(date: Date): DateScheduleEntry | null {
+    const d = new Date(date);
+    d.setHours(0, 0, 0, 0);
+    const jsDay = d.getDay();
+    if (jsDay === 0 || jsDay === 6) return null;
+
+    const dayIndex = jsDay - 1;
+    const diffTime = d.getTime() - BASE_WEEK_START.getTime();
+    const diffWeeks = Math.floor(diffTime / (7 * 24 * 60 * 60 * 1000));
+    const weekNumber = (((diffWeeks % 5) + 5) % 5) + 1;
+    const rotation = ROTATION_MATRIX[weekNumber - 1];
+    const group = GROUPS[rotation[dayIndex]];
+
+    return {
+      groupName: group.name,
+      members: group.members,
+      dayOfWeek: DAYS_OF_WEEK[dayIndex],
+      weekNumber,
+    };
   }
 
   getGroupMembers(groupName: string): string[] {
