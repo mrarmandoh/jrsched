@@ -42,7 +42,7 @@ import { DateScheduleEntry } from '../services/schedule.service';
       </div>
     } @else {
       <div class="weekend-msg">
-        This date falls on a weekend — no WFH schedule.
+        This date falls on a weekend
       </div>
     }
   `,

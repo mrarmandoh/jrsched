@@ -10,7 +10,7 @@ import { PersonWeekEntry } from '../services/schedule.service';
         <thead>
           <tr>
             <th>Week</th>
-            <th>WFH Day</th>
+            <th>Week Day</th>
           </tr>
         </thead>
         <tbody>
