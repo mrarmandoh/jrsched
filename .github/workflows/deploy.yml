@@ -27,7 +27,7 @@ jobs:
 
       - run: npm ci
 
-      - run: npm run build -- --configuration production
+      - run: npm run build -- --configuration production --base-href /jrsched/
 
       - uses: actions/upload-pages-artifact@v3
         with:
