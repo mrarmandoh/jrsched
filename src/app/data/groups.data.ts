@@ -19,6 +19,6 @@ export const GROUPS: Group[] = [
   },
   {
     name: 'Group E',
-    members: ['AMe', 'RT', 'JG', 'VT'],
+    members: ['AMe', 'RN', 'JG', 'VT'],
   },
 ];
