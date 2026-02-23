@@ -3,22 +3,22 @@ import { Group } from '../models/group.model';
 export const GROUPS: Group[] = [
   {
     name: 'Group A',
-    members: ['Armando A', 'Daneel', 'Alejandro M', 'Isumy'],
+    members: ['AA', 'Daneel', 'AMa', 'IF'],
   },
   {
     name: 'Group B',
-    members: ['Yiny', 'Alejandro S', 'Jose Barrera', 'Luis'],
+    members: ['Yiny', 'AS', 'JB', 'LC'],
   },
   {
     name: 'Group C',
-    members: ['Nelson', 'Samuel', 'Osmel', 'Armando H'],
+    members: ['NS', 'Samuel', 'Osmel', 'AH'],
   },
   {
     name: 'Group D',
-    members: ['Manny', 'Alexander', 'Rory', 'Fili'],
+    members: ['MZ', 'Alexander', 'Rory', 'FC'],
   },
   {
     name: 'Group E',
-    members: ['Ana', 'Roberto', 'Guevara', 'Raghava'],
+    members: ['AMe', 'RT', 'JG', 'Raghava'],
   },
 ];
